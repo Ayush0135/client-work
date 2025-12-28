@@ -3,11 +3,16 @@ import Image from 'next/image';
 export default function Gallery() {
     // In a real app, these would be real paths
     const works = [
+        { type: 'Service', src: '/images/jet-pump-clean.png', caption: 'Jet Pump Deep Cleaning' },
         { type: 'Repair', src: '/images/ac-dirty.png', caption: 'Deep Cleaning: Before' },
         { type: 'Maintenance', src: '/images/ac-cleaning.png', caption: 'Deep Cleaning: In Progress' },
         { type: 'Installation', src: '/images/split-ac-indoor.png', caption: 'Perfect Split AC Installation' },
+        { type: 'Commercial', src: '/images/cassette-ac.png', caption: 'Cassette AC Service' },
+        { type: 'Commercial', src: '/images/ductable-ac.png', caption: 'Ductable AC Installation' },
         { type: 'Equipment', src: '/images/ac-outdoor.png', caption: 'Outdoor Unit Setup (Patna)' },
         { type: 'Repair', src: '/images/window-ac.png', caption: 'Window AC Service' },
+        { type: 'Appliance', src: '/images/geyser-repair.png', caption: 'Geyser Repair Service' },
+        { type: 'Appliance', src: '/images/washing-machine.png', caption: 'Washing Machine Repair' },
         { type: 'Tools', src: '/images/ac-tools.png', caption: 'Professional Tools Used' },
     ];
 
