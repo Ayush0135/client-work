@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { Menu, X, Phone, ShieldCheck } from 'lucide-react';
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { ThemeToggle } from '@/components/ui/ThemeToggle';
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -20,7 +21,7 @@ const Navbar = () => {
     ];
 
     return (
-        <nav className="fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-gray-100 shadow-sm">
+        <nav className="fixed w-full z-50 bg-white/90 dark:bg-gray-950/90 backdrop-blur-md border-b border-gray-100 dark:border-gray-800 shadow-sm transition-colors duration-300">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex justify-between items-center h-20">
                     {/* Logo */}
@@ -29,7 +30,7 @@ const Navbar = () => {
                             <ShieldCheck size={24} />
                         </div>
                         <div className="flex flex-col">
-                            <span className="font-bold text-xl text-gray-900 leading-tight">A&N</span>
+                            <span className="font-bold text-xl text-gray-900 dark:text-white leading-tight">A&N</span>
                             <span className="text-xs font-medium text-blue-600 tracking-wider">ENTERPRISE</span>
                         </div>
                     </Link>
@@ -40,16 +41,17 @@ const Navbar = () => {
                             <Link
                                 key={link.name}
                                 href={link.href}
-                                className="text-gray-600 hover:text-blue-600 font-medium transition-colors relative group"
+                                className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium transition-colors relative group"
                             >
                                 {link.name}
-                                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-600 transition-all group-hover:w-full" />
+                                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-600 dark:bg-blue-400 transition-all group-hover:w-full" />
                             </Link>
                         ))}
                     </div>
 
-                    {/* CTA Button */}
-                    <div className="hidden md:flex items-center">
+                    {/* CTA Button & Theme Toggle */}
+                    <div className="hidden md:flex items-center gap-4">
+                        <ThemeToggle />
                         <a
                             href="tel:+917050207867" // Updated number
                             className="flex items-center gap-2 bg-blue-600 text-white px-5 py-2.5 rounded-full font-semibold hover:bg-blue-700 transition-all shadow-lg hover:shadow-blue-200 transform hover:-translate-y-0.5"
@@ -60,10 +62,11 @@ const Navbar = () => {
                     </div>
 
                     {/* Mobile Menu Button */}
-                    <div className="md:hidden flex items-center">
+                    <div className="md:hidden flex items-center gap-4">
+                        <ThemeToggle />
                         <button
                             onClick={toggleMenu}
-                            className="text-gray-600 hover:text-blue-600 focus:outline-none p-2"
+                            className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 focus:outline-none p-2"
                         >
                             {isOpen ? <X size={28} /> : <Menu size={28} />}
                         </button>
@@ -78,7 +81,7 @@ const Navbar = () => {
                         initial={{ opacity: 0, height: 0 }}
                         animate={{ opacity: 1, height: 'auto' }}
                         exit={{ opacity: 0, height: 0 }}
-                        className="md:hidden bg-white border-b border-gray-100 overflow-hidden"
+                        className="md:hidden bg-white dark:bg-gray-950 border-b border-gray-100 dark:border-gray-800 overflow-hidden"
                     >
                         <div className="px-4 pt-2 pb-6 space-y-2">
                             {navLinks.map((link) => (
@@ -86,7 +89,7 @@ const Navbar = () => {
                                     key={link.name}
                                     href={link.href}
                                     onClick={() => setIsOpen(false)}
-                                    className="block px-4 py-3 text-lg font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"
+                                    className="block px-4 py-3 text-lg font-medium text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-gray-800 rounded-lg transition-colors"
                                 >
                                     {link.name}
                                 </Link>
